@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Clear Alerts Storage</title>
+</head>
+<body>
+    <h1>Clear Alerts Storage</h1>
+    <button onclick="clearStorage()">Clear Alerts from LocalStorage</button>
+    <p id="status"></p>
+    
+    <script>
+        function clearStorage() {
+            localStorage.removeItem('sentinel_alerts');
+            document.getElementById('status').textContent = 'Alerts storage cleared successfully!';
+        }
+    </script>
+</body>
+</html>

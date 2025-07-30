@@ -1,0 +1,51 @@
+{
+  "indexes": [
+    {
+      "collectionGroup": "twitter_posts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "keyword",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "timestamp",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "twitter_posts",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "keyword",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "sentiment",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "timestamp",
+          "order": "DESCENDING"
+        }
+      ]
+    },
+    {
+      "collectionGroup": "keywords",
+      "queryScope": "COLLECTION",
+      "fields": [
+        {
+          "fieldPath": "isActive",
+          "order": "ASCENDING"
+        },
+        {
+          "fieldPath": "priority",
+          "order": "DESCENDING"
+        }
+      ]
+    }
+  ],
+  "fieldOverrides": []
+}

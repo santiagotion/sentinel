@@ -1,0 +1,193 @@
+/* High Contrast Text Fixes */
+
+/* Ensure all text has proper contrast */
+.text-gray-500 {
+  color: #4b5563 !important;
+}
+
+.dark .text-gray-500 {
+  color: #d1d5db !important;
+}
+
+.text-gray-400 {
+  color: #6b7280 !important;
+}
+
+.dark .text-gray-400 {
+  color: #e5e7eb !important;
+}
+
+.text-gray-300 {
+  color: #9ca3af !important;
+}
+
+.dark .text-gray-300 {
+  color: #f3f4f6 !important;
+}
+
+.text-gray-200 {
+  color: #6b7280 !important;
+}
+
+.dark .text-gray-200 {
+  color: #f9fafb !important;
+}
+
+.text-gray-600 {
+  color: #4b5563 !important;
+}
+
+.dark .text-gray-600 {
+  color: #d1d5db !important;
+}
+
+.text-gray-700 {
+  color: #374151 !important;
+}
+
+.dark .text-gray-700 {
+  color: #e5e7eb !important;
+}
+
+.text-gray-800 {
+  color: #1f2937 !important;
+}
+
+.dark .text-gray-800 {
+  color: #f3f4f6 !important;
+}
+
+/* Card backgrounds with proper contrast */
+.bg-white {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+}
+
+.dark .bg-white {
+  background-color: #1f2937 !important;
+  color: #f9fafb !important;
+}
+
+/* Sidebar and navigation fixes */
+.bg-gray-800 {
+  background-color: #1f2937 !important;
+}
+
+.dark .bg-gray-800 {
+  background-color: #111827 !important;
+}
+
+/* Button and interactive element contrast */
+.hover\:bg-gray-100:hover {
+  background-color: #f3f4f6 !important;
+  color: #111827 !important;
+}
+
+.dark .hover\:bg-gray-100:hover {
+  background-color: #374151 !important;
+  color: #f9fafb !important;
+}
+
+.hover\:bg-gray-700:hover {
+  background-color: #374151 !important;
+  color: #f9fafb !important;
+}
+
+.dark .hover\:bg-gray-700:hover {
+  background-color: #4b5563 !important;
+  color: #f9fafb !important;
+}
+
+/* Chart and data visualization text */
+.recharts-text {
+  fill: #374151 !important;
+}
+
+.dark .recharts-text {
+  fill: #d1d5db !important;
+}
+
+/* Alert and status text */
+.text-red-600 {
+  color: #dc2626 !important;
+}
+
+.dark .text-red-600 {
+  color: #f87171 !important;
+}
+
+.text-green-600 {
+  color: #16a34a !important;
+}
+
+.dark .text-green-600 {
+  color: #4ade80 !important;
+}
+
+.text-blue-600 {
+  color: #2563eb !important;
+}
+
+.dark .text-blue-600 {
+  color: #60a5fa !important;
+}
+
+.text-yellow-600 {
+  color: #ca8a04 !important;
+}
+
+.dark .text-yellow-600 {
+  color: #facc15 !important;
+}
+
+/* Form input contrast */
+input, textarea, select {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border-color: #d1d5db !important;
+}
+
+.dark input, .dark textarea, .dark select {
+  background-color: #374151 !important;
+  color: #f9fafb !important;
+  border-color: #4b5563 !important;
+}
+
+/* Placeholder text */
+input::placeholder, textarea::placeholder {
+  color: #6b7280 !important;
+}
+
+.dark input::placeholder, .dark textarea::placeholder {
+  color: #9ca3af !important;
+}
+
+/* Badge and tag contrast */
+.bg-gray-100 {
+  background-color: #f3f4f6 !important;
+  color: #374151 !important;
+}
+
+.dark .bg-gray-100 {
+  background-color: #374151 !important;
+  color: #e5e7eb !important;
+}
+
+/* High contrast mode utilities */
+@media (prefers-contrast: high) {
+  .text-gray-500 {
+    color: #374151 !important;
+  }
+  
+  .dark .text-gray-500 {
+    color: #d1d5db !important;
+  }
+  
+  .text-gray-400 {
+    color: #4b5563 !important;
+  }
+  
+  .dark .text-gray-400 {
+    color: #e5e7eb !important;
+  }
+}

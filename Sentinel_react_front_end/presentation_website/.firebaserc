@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "default": "sentinel-rdc"
+  },
+  "targets": {
+    "sentinel-rdc": {
+      "hosting": {
+        "presentation": [
+          "sentinel-deck"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
