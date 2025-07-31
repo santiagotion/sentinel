@@ -46,7 +46,7 @@ export default function App() {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-gray-900 dark:bg-gray-900">
+      <div className="min-h-screen bg-white dark:bg-gray-900">
         <Navigation 
           activeSection={activeSection}
           showMobileMenu={showMobileMenu}

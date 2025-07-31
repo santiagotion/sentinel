@@ -53,7 +53,7 @@ interface SettingsContextType {
 }
 
 const defaultSettings: UserSettings = {
-  theme: 'dark',
+  theme: 'system',
   language: 'fr',
   notifications: {
     enabled: true,

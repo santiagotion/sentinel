@@ -59,21 +59,6 @@ export class AlertsService extends BaseService {
     super('sentinel_alerts');
   }
 
-  private parseDatesInAlert(alert: any): DetailedAlert {
-    return {
-      ...alert,
-      time: new Date(alert.time),
-      notes: alert.notes?.map((note: any) => ({
-        ...note,
-        timestamp: new Date(note.timestamp)
-      })),
-      timeline: alert.timeline?.map((event: any) => ({
-        ...event,
-        timestamp: new Date(event.timestamp)
-      }))
-    };
-  }
-
   private generateMockAlerts(): DetailedAlert[] {
     return [
       {
@@ -192,11 +177,6 @@ export class AlertsService extends BaseService {
     
     let alerts = this.loadFromStorage<DetailedAlert[]>() || this.generateMockAlerts();
     
-    // Convert date strings back to Date objects if loading from storage
-    if (this.loadFromStorage<DetailedAlert[]>()) {
-      alerts = alerts.map(alert => this.parseDatesInAlert(alert));
-    }
-    
     if (filters) {
       if (filters.type?.length) {
         alerts = alerts.filter(alert => filters.type!.includes(alert.type));
@@ -225,13 +205,7 @@ export class AlertsService extends BaseService {
 
   async getAlert(id: number): Promise<DetailedAlert | null> {
     await this.simulateDelay(100);
-    let alerts = this.loadFromStorage<DetailedAlert[]>() || this.generateMockAlerts();
-    
-    // Convert date strings back to Date objects if loading from storage
-    if (this.loadFromStorage<DetailedAlert[]>()) {
-      alerts = alerts.map(alert => this.parseDatesInAlert(alert));
-    }
-    
+    const alerts = this.loadFromStorage<DetailedAlert[]>() || this.generateMockAlerts();
     return alerts.find(alert => alert.id === id) || null;
   }
 
@@ -272,13 +246,7 @@ export class AlertsService extends BaseService {
   async updateAlertStatus(id: number, status: DetailedAlert['status'], note?: string): Promise<DetailedAlert> {
     await this.simulateDelay(200);
     
-    let alerts = this.loadFromStorage<DetailedAlert[]>() || this.generateMockAlerts();
-    
-    // Convert date strings back to Date objects if loading from storage
-    if (this.loadFromStorage<DetailedAlert[]>()) {
-      alerts = alerts.map(alert => this.parseDatesInAlert(alert));
-    }
-    
+    const alerts = this.loadFromStorage<DetailedAlert[]>() || this.generateMockAlerts();
     const alertIndex = alerts.findIndex(alert => alert.id === id);
     
     if (alertIndex === -1) {
@@ -304,13 +272,7 @@ export class AlertsService extends BaseService {
   async assignAlert(id: number, assignee: string): Promise<DetailedAlert> {
     await this.simulateDelay(200);
     
-    let alerts = this.loadFromStorage<DetailedAlert[]>() || this.generateMockAlerts();
-    
-    // Convert date strings back to Date objects if loading from storage
-    if (this.loadFromStorage<DetailedAlert[]>()) {
-      alerts = alerts.map(alert => this.parseDatesInAlert(alert));
-    }
-    
+    const alerts = this.loadFromStorage<DetailedAlert[]>() || this.generateMockAlerts();
     const alertIndex = alerts.findIndex(alert => alert.id === id);
     
     if (alertIndex === -1) {
@@ -336,13 +298,7 @@ export class AlertsService extends BaseService {
   async addNote(id: number, content: string): Promise<DetailedAlert> {
     await this.simulateDelay(150);
     
-    let alerts = this.loadFromStorage<DetailedAlert[]>() || this.generateMockAlerts();
-    
-    // Convert date strings back to Date objects if loading from storage
-    if (this.loadFromStorage<DetailedAlert[]>()) {
-      alerts = alerts.map(alert => this.parseDatesInAlert(alert));
-    }
-    
+    const alerts = this.loadFromStorage<DetailedAlert[]>() || this.generateMockAlerts();
     const alertIndex = alerts.findIndex(alert => alert.id === id);
     
     if (alertIndex === -1) {
@@ -384,12 +340,7 @@ export class AlertsService extends BaseService {
   }> {
     await this.simulateDelay(100);
     
-    let alerts = this.loadFromStorage<DetailedAlert[]>() || this.generateMockAlerts();
-    
-    // Convert date strings back to Date objects if loading from storage
-    if (this.loadFromStorage<DetailedAlert[]>()) {
-      alerts = alerts.map(alert => this.parseDatesInAlert(alert));
-    }
+    const alerts = this.loadFromStorage<DetailedAlert[]>() || this.generateMockAlerts();
     
     return {
       total: alerts.length,
@@ -407,13 +358,7 @@ export class AlertsService extends BaseService {
   async deleteAlert(id: number): Promise<void> {
     await this.simulateDelay(200);
     
-    let alerts = this.loadFromStorage<DetailedAlert[]>() || this.generateMockAlerts();
-    
-    // Convert date strings back to Date objects if loading from storage
-    if (this.loadFromStorage<DetailedAlert[]>()) {
-      alerts = alerts.map(alert => this.parseDatesInAlert(alert));
-    }
-    
+    const alerts = this.loadFromStorage<DetailedAlert[]>() || this.generateMockAlerts();
     const filteredAlerts = alerts.filter(alert => alert.id !== id);
     
     this.saveToStorage(filteredAlerts);

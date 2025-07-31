@@ -27,7 +27,7 @@ import {
   CalendarIcon,
   MapPinIcon,
   HashIcon,
-  Globe
+  GlobalIcon
 } from 'lucide-react';
 import { counterActionService } from '../../services/counterActionService';
 import { CreateCampaignModal } from '../modals/CreateCampaignModal';

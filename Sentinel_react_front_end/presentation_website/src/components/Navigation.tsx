@@ -1,5 +1,6 @@
 // Navigation component
-import { Shield, Menu, X } from 'lucide-react';
+import { Shield, Menu, X, Sun, Moon } from 'lucide-react';
+import { useTheme } from '../contexts/ThemeContext';
 
 interface NavigationProps {
   activeSection: string;
@@ -14,6 +15,7 @@ export function Navigation({
   setShowMobileMenu, 
   scrollToSection 
 }: NavigationProps) {
+  const { theme, toggleTheme } = useTheme();
   const navigationItems = [
     { id: 'hero', label: 'Accueil' },
     { id: 'executive-summary', label: 'Résumé Exécutif' },
@@ -60,10 +62,33 @@ export function Navigation({
               </button>
             ))}
             
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className="ml-4 p-2 rounded-md text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
+              aria-label="Toggle theme"
+            >
+              {theme === 'light' ? (
+                <Moon className="w-5 h-5" />
+              ) : (
+                <Sun className="w-5 h-5" />
+              )}
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden">
+          <div className="md:hidden flex items-center space-x-3">
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-lg bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-all duration-200"
+              aria-label="Toggle theme"
+            >
+              {theme === 'light' ? (
+                <Moon className="w-5 h-5" />
+              ) : (
+                <Sun className="w-5 h-5" />
+              )}
+            </button>
             <button
               onClick={() => setShowMobileMenu(!showMobileMenu)}
               className="p-2 text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors duration-200"
