@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useSettings } from './contexts/SettingsContext';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { GaugeChart } from './components/ui/GaugeChart';
 import { EnhancedOverviewScreen } from './components/screens/EnhancedOverviewScreen';
@@ -31,8 +30,7 @@ function Dashboard() {
   const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
   const [notifications, setNotifications] = useState(3);
   const [lastRefresh, setLastRefresh] = useState(new Date());
-  const { settings, updateSettings } = useSettings();
-  const darkMode = settings.theme === 'dark' || (settings.theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+  const [darkMode, setDarkMode] = useState(false);
   const [keywords, setKeywords] = useState([
     { 
       id: 1, 
@@ -79,7 +77,13 @@ function Dashboard() {
     return () => clearInterval(interval);
   }, []);
 
-  // Theme is now handled by SettingsContext
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  }, [darkMode]);
 
   const menuItems = [
     { id: 'overview', label: 'Vue d\'ensemble', icon: Home, badge: null },
@@ -217,7 +221,7 @@ function Dashboard() {
             </div>
             <div className="flex items-center space-x-4">
               <button 
-                onClick={() => updateSettings('theme', darkMode ? 'light' : 'dark')}
+                onClick={() => setDarkMode(!darkMode)}
                 className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
                 title={darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
               >
