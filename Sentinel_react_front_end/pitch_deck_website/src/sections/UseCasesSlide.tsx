@@ -19,8 +19,8 @@ export function UseCasesSlide() {
       solution: {
         title: "Avec SENTINEL",
         points: [
-          "Détection en 2.4 secondes avant que les tensions n'éclatent",
-          "Identification des 96.3% des acteurs étrangers manipulateurs",
+          "Détection rapide avant que les tensions n'éclatent",
+          "Identification des acteurs étrangers manipulateurs",
           "Alertes précoces aux leaders communautaires et autorités",
           "Contre-narratifs de paix diffusés instantanément"
         ]
@@ -46,7 +46,7 @@ export function UseCasesSlide() {
           "Protection active de notre réputation économique 24/7",
           "Neutralisation des campagnes avant impact sur les marchés",
           "Données factuelles fournies aux investisseurs en temps réel",
-          "$45M+ de pertes économiques déjà évitées"
+          "Pertes économiques majeures évitées"
         ]
       },
       color: "from-emerald-500 to-emerald-600"
@@ -67,8 +67,8 @@ export function UseCasesSlide() {
       solution: {
         title: "Avec SENTINEL",
         points: [
-          "45 millions de Congolais protégés par surveillance multi-plateforme",
-          "11 plateformes surveillées, millions de messages analysés/minute",
+          "Tous les Congolais protégés par surveillance multi-plateforme",
+          "Toutes les plateformes majeures surveillées, millions de messages analysés",
           "Réseaux cachés et connexions invisibles révélés instantanément",
           "Chaque citoyen reçoit l'info vérifiée, pas la manipulation"
         ]
@@ -91,9 +91,9 @@ export function UseCasesSlide() {
       solution: {
         title: "Avec SENTINEL",
         points: [
-          "Vision claire de l'opinion à travers 26 provinces en temps réel",
+          "Vision claire de l'opinion à travers toutes les provinces en temps réel",
           "Préoccupations citoyennes capturées dans toutes les langues locales",
-          "Politiques ajustées selon feedback = 73% satisfaction améliorée",
+          "Politiques ajustées selon feedback = satisfaction citoyenne améliorée",
           "Gouvernance basée sur données, pas sur suppositions"
         ]
       },

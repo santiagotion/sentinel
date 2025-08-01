@@ -16,9 +16,10 @@ import { HowItWorksSlide } from './sections/HowItWorksSlide';
 import { UseCasesSlide } from './sections/UseCasesSlide';
 import { DemoSlide } from './sections/DemoSlide';
 import { TeamSlide } from './sections/TeamSlide';
-import { ImplementationSlide } from './sections/ImplementationSlide';
 import { BenefitsSlide } from './sections/BenefitsSlide';
 import { NextStepsSlide } from './sections/NextStepsSlide';
+import { FactCheckAppSlide } from './sections/FactCheckAppSlide';
+import { TechnologySlide } from './sections/TechnologySlide';
 
 function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -31,13 +32,14 @@ function App() {
     <ComplexitySlide />,
     <PublicOpinionSlide />,
     <SolutionOverviewSlide />,
+    <TechnologySlide />,
     <FeaturesSlide />,
+    <FactCheckAppSlide />,
     <HowItWorksSlide />,
     <UseCasesSlide />,
+    <BenefitsSlide />,
     <DemoSlide />,
     <TeamSlide />,
-    <ImplementationSlide />,
-    <BenefitsSlide />,
     <NextStepsSlide />
   ];
 
@@ -49,13 +51,14 @@ function App() {
     "L'Impossible Défi",
     "Le Pouls de la Nation",
     "La Solution SENTINEL",
+    "La Technologie",
     "Capacités Complètes",
-    "SENTINEL en Action",
+    "Application Citoyenne",
+    "Scénarios de Protection",
     "Cas d'Usage",
+    "Bénéfices",
     "Démonstration",
     "L'Équipe",
-    "Implémentation",
-    "Bénéfices",
     "Prochaines Étapes"
   ];
 

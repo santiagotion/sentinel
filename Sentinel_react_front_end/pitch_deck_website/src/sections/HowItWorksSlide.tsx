@@ -15,14 +15,14 @@ export function HowItWorksSlide() {
         },
         {
           time: "2.4 sec",
-          event: "87 acteurs étrangers identifiés orchestrant la campagne via 312 comptes bots",
+          event: "Acteurs étrangers identifiés orchestrant la campagne via multiples comptes bots",
           action: "Alerte URGENTE aux autorités",
           icon: Bot,
           color: "text-orange-600"
         },
         {
           time: "3 min",
-          event: "Vidéo identifiée comme deepfake, source tracée à serveur externe",
+          event: "Vidéo identifiée comme manipulation et fausse information",
           action: "Preuves compilées automatiquement",
           icon: Share2,
           color: "text-purple-600"
@@ -48,14 +48,14 @@ export function HowItWorksSlide() {
         },
         {
           time: "1 min",
-          event: "Prédiction: Impact économique potentiel de $45M si non stoppé",
+          event: "Prédiction: Impact économique majeur si non stoppé",
           action: "Analyse d'impact lancée",
           icon: Clock,
           color: "text-orange-600"
         },
         {
           time: "5 min",
-          event: "Réseau coordonné de 1,247 comptes tracé, majorité hors RDC",
+          event: "Réseau coordonné de milliers de comptes tracé, majorité hors RDC",
           action: "Carte des attaquants générée",
           icon: Users,
           color: "text-purple-600"
@@ -81,7 +81,7 @@ export function HowItWorksSlide() {
         },
         {
           time: "24h",
-          event: "45,000 mentions analysées: préoccupations sur accessibilité dans 8 provinces",
+          event: "Milliers de mentions analysées: préoccupations sur accessibilité dans plusieurs provinces",
           action: "Insights extraits automatiquement",
           icon: TrendingUp,
           color: "text-purple-600"
@@ -95,8 +95,41 @@ export function HowItWorksSlide() {
         },
         {
           time: "72h",
-          event: "Politique ajustée selon feedback, satisfaction citoyenne améliorée de 73%",
+          event: "Politique ajustée selon feedback, satisfaction citoyenne significativement améliorée",
           action: "GOUVERNANCE MODERNE",
+          icon: CheckCircle2,
+          color: "text-emerald-600"
+        }
+      ]
+    },
+    {
+      title: "Cas 4: Attaque Nocturne de Désinformation",
+      timeline: [
+        {
+          time: "3:00 AM",
+          event: "Faux décret présidentiel publié: 'Nouveau taxes sur transferts d'argent mobile'",
+          action: "SENTINEL détecte activité anormale nocturne",
+          icon: Clock,
+          color: "text-red-600"
+        },
+        {
+          time: "3:02 AM",
+          event: "Propagation virale pendant que la population dort, panique anticipée au réveil",
+          action: "Équipe d'urgence alertée automatiquement",
+          icon: AlertTriangle,
+          color: "text-orange-600"
+        },
+        {
+          time: "3:15 AM",
+          event: "Document analysé et confirmé comme falsification, sources malveillantes identifiées",
+          action: "Contre-narrative préparée",
+          icon: Share2,
+          color: "text-purple-600"
+        },
+        {
+          time: "6:00 AM",
+          event: "Démenti officiel déjà viral au réveil, panique évitée, confiance maintenue",
+          action: "CHAOS ÉCONOMIQUE ÉVITÉ",
           icon: CheckCircle2,
           color: "text-emerald-600"
         }
@@ -114,7 +147,7 @@ export function HowItWorksSlide() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-light mb-6">
-            <span className="gradient-text font-bold">SENTINEL en Action</span>
+            <span className="gradient-text font-bold">Scénarios de Protection Nationale</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
             Découvrez comment SENTINEL transforme des situations critiques en victoires 
@@ -172,33 +205,6 @@ export function HowItWorksSlide() {
           ))}
         </div>
 
-        {/* Key Metrics */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
-          className="mt-12 bg-gradient-to-r from-congo-blue/10 to-congo-red/10 dark:from-congo-blue/20 dark:to-congo-red/20 rounded-xl p-6"
-        >
-          <h3 className="text-xl font-semibold text-center mb-6">Impact National Mesurable</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            <div>
-              <div className="text-3xl font-bold text-emerald-600">0</div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Violences évitées</p>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-blue-600">$45M+</div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Pertes économiques évitées</p>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-purple-600">73%</div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Satisfaction citoyenne</p>
-            </div>
-            <div>
-              <div className="text-3xl font-bold text-orange-600">96.3%</div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Menaces neutralisées</p>
-            </div>
-          </div>
-        </motion.div>
       </div>
     </section>
   );

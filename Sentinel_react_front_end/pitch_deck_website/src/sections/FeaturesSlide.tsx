@@ -10,7 +10,7 @@ export function FeaturesSlide() {
       items: [
         "Stoppe la désinformation avant qu'elle ne provoque des violences",
         "Protège des millions de Congolais des manipulations quotidiennes",
-        "Détecte les campagnes de division communautaire en 2.4 secondes",
+        "Détecte les campagnes de division communautaire rapidement",
         "Alertes précoces pour prévenir les crises sécuritaires"
       ]
     },
@@ -22,7 +22,7 @@ export function FeaturesSlide() {
         "Protège notre réputation internationale et attire les investisseurs",
         "Neutralise les fausses infos sur nos ressources naturelles",
         "Défend nos secteurs stratégiques contre la guerre économique",
-        "Mesure l'impact financier des campagnes de désinformation"
+        "Réduit l'impact économique des fausses informations"
       ]
     },
     {
@@ -31,7 +31,7 @@ export function FeaturesSlide() {
       color: "from-purple-500 to-purple-600",
       items: [
         "Analyse des millions de messages impossibles à traiter manuellement",
-        "Détecte 96.3% des bots et acteurs étrangers malveillants",
+        "Détecte la majorité des bots et acteurs étrangers malveillants",
         "Révèle les réseaux coordonnés invisibles à l'œil nu",
         "Comprend Lingala, Swahili, Kikongo et dialectes locaux"
       ]
@@ -47,13 +47,6 @@ export function FeaturesSlide() {
         "Transforme le feedback citoyen en politiques efficaces"
       ]
     }
-  ];
-
-  const technicalSpecs = [
-    { icon: Globe, label: "Couverture Nationale", detail: "26 provinces, toutes communautés" },
-    { icon: Zap, label: "Vitesse Écrasante", detail: "Analyse millions msg/minute" },
-    { icon: Bot, label: "Détection Avancée", detail: "Bots, deepfakes, réseaux cachés" },
-    { icon: Shield, label: "Action Immédiate", detail: "Neutralisation automatique" }
   ];
 
   return (
@@ -105,67 +98,18 @@ export function FeaturesSlide() {
           ))}
         </div>
 
-        {/* Dashboard Preview */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-          className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl p-8 mb-12"
-        >
-          <h3 className="text-2xl font-semibold text-center mb-6">Tableau de Bord Exécutif</h3>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <div className="bg-white dark:bg-gray-700 rounded-lg p-4 text-center">
-              <Users className="w-8 h-8 mx-auto mb-2 text-blue-600" />
-              <div className="text-2xl font-bold">45M+</div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Congolais protégés</p>
-            </div>
-            <div className="bg-white dark:bg-gray-700 rounded-lg p-4 text-center">
-              <AlertTriangle className="w-8 h-8 mx-auto mb-2 text-red-600" />
-              <div className="text-2xl font-bold">2.4s</div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Détection menaces</p>
-            </div>
-            <div className="bg-white dark:bg-gray-700 rounded-lg p-4 text-center">
-              <Globe className="w-8 h-8 mx-auto mb-2 text-purple-600" />
-              <div className="text-2xl font-bold">11</div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Plateformes surveillées</p>
-            </div>
-            <div className="bg-white dark:bg-gray-700 rounded-lg p-4 text-center">
-              <Shield className="w-8 h-8 mx-auto mb-2 text-emerald-600" />
-              <div className="text-2xl font-bold">96.3%</div>
-              <p className="text-sm text-gray-600 dark:text-gray-400">Précision détection</p>
-            </div>
-          </div>
-        </motion.div>
 
-        {/* Technical Specifications */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
-        >
-          <h3 className="text-xl font-semibold text-center mb-6">Solutions aux Défis Critiques</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {technicalSpecs.map((spec, index) => (
-              <div key={index} className="bg-white dark:bg-gray-800 rounded-lg p-4 text-center card-shadow">
-                <spec.icon className="w-8 h-8 mx-auto mb-2 text-congo-blue" />
-                <h4 className="font-medium mb-1">{spec.label}</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">{spec.detail}</p>
-              </div>
-            ))}
-          </div>
-        </motion.div>
 
         {/* Bottom Message */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 1, duration: 0.5 }}
+          transition={{ delay: 0.6, duration: 0.5 }}
           className="mt-12 bg-gradient-to-r from-congo-blue/10 to-congo-red/10 dark:from-congo-blue/20 dark:to-congo-red/20 rounded-xl p-6 text-center"
         >
           <p className="text-lg font-medium">
-            SENTINEL transforme l'<span className="text-congo-red font-bold">impossible défi manuel</span> en une 
-            <span className="text-emerald-600 font-bold">protection automatisée</span> pour <span className="text-congo-blue font-bold">45 millions de Congolais</span>
+            SENTINEL transforme l'<span className="text-congo-red font-bold">impossible défi manuel</span> en une{' '}
+            <span className="text-emerald-600 font-bold">protection automatisée</span> pour <span className="text-congo-blue font-bold">tous les Congolais</span>
           </p>
         </motion.div>
       </div>
