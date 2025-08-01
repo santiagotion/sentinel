@@ -1,51 +1,53 @@
-import { CheckCircle, ArrowRight, AlertTriangle, Clock, Shield, TrendingUp } from 'lucide-react';
+import { CheckCircle, ArrowRight, AlertTriangle, Clock, Shield, TrendingUp, MessageCircle, Presentation, Calendar, Mail } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export function NextStepsSlide() {
-  const actions = [
+  const contactOptions = [
     {
-      title: "Validation Immédiate (7 jours)",
-      icon: Shield,
-      urgent: true,
-      tasks: [
-        "Décision du Conseil des Ministres pour stopper les menaces",
-        "Approbation du budget de protection nationale",
-        "Mandat présidentiel pour défense informationnelle"
+      title: "Questions & Clarifications",
+      icon: MessageCircle,
+      description: "Nous sommes ouverts à toutes vos questions",
+      points: [
+        "Approfondissement technique de la solution",
+        "Clarifications sur l'approche proposée",
+        "Discussion sur l'adaptation à vos besoins spécifiques"
       ]
     },
     {
-      title: "Mobilisation Rapide (14 jours)",
-      icon: Clock,
-      urgent: true,
-      tasks: [
-        "Activation équipe d'urgence SENTINEL",
-        "Sélection sites prioritaires (zones à risque)",
-        "Début protection immédiate des citoyens vulnérables"
+      title: "Présentation Live",
+      icon: Presentation,
+      description: "Démonstration complète de SENTINEL",
+      points: [
+        "Présentation détaillée avec votre équipe",
+        "Démonstration en temps réel du système",
+        "Session de questions-réponses interactive"
       ]
     },
     {
-      title: "Déploiement National (30 jours)",
-      icon: TrendingUp,
-      tasks: [
-        "Couverture complète 11 plateformes principales",
-        "Protection active 45 millions de Congolais",
-        "Neutralisation acteurs étrangers malveillants"
+      title: "Planification & Stratégie",
+      icon: Calendar,
+      description: "Définir ensemble la feuille de route",
+      points: [
+        "Calendrier de déploiement personnalisé",
+        "Identification des priorités nationales",
+        "Plan d'action adapté à vos objectifs"
       ]
     },
     {
-      title: "Excellence Opérationnelle (90 jours)",
-      icon: CheckCircle,
-      tasks: [
-        "Formation complète experts congolais",
-        "Gouvernance moderne basée sur opinion publique",
-        "RDC leader africain contre désinformation"
+      title: "Contact Direct",
+      icon: Mail,
+      description: "Nous restons à votre disposition",
+      points: [
+        "Disponibles pour un appel vidéo",
+        "Rencontre en personne si nécessaire",
+        "Réponse rapide à toutes vos demandes"
       ]
     }
   ];
 
   return (
-    <section className="h-full flex items-center justify-center p-8">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+    <section className="h-full flex items-center justify-center p-4 md:p-6 lg:p-8">
+      <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -56,65 +58,73 @@ export function NextStepsSlide() {
             <span className="gradient-text font-bold">Prochaines Étapes</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
-            Chaque jour de retard = Plus de vies en danger, plus de pertes économiques, 
-            plus de citoyens manipulés. Agissons maintenant.
+            Nous sommes à votre entière disposition pour répondre à vos questions 
+            et adapter notre solution à vos besoins spécifiques
           </p>
         </motion.div>
 
-        {/* Actions Grid */}
+        {/* Contact Options Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          {actions.map((action, index) => (
+          {contactOptions.map((option, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 card-shadow"
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 card-shadow hover:shadow-lg transition-all"
             >
-              <h3 className="text-lg font-semibold mb-4 flex items-center">
-                <div className={`w-8 h-8 ${action.urgent ? 'bg-gradient-to-r from-red-500 to-red-600' : 'bg-gradient-to-r from-congo-blue to-congo-blue/80'} rounded-lg flex items-center justify-center mr-3`}>
-                  {action.icon ? <action.icon className="w-4 h-4 text-white" /> : <span className="text-white font-medium">{index + 1}</span>}
+              <div className="flex items-start space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-congo-blue to-congo-blue/80 rounded-xl flex items-center justify-center flex-shrink-0">
+                  <option.icon className="w-6 h-6 text-white" />
                 </div>
-                {action.title}
-              </h3>
-              <ul className="space-y-2">
-                {action.tasks.map((task, i) => (
-                  <li key={i} className="text-sm text-gray-600 dark:text-gray-400 flex items-start">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                    {task}
-                  </li>
-                ))}
-              </ul>
+                <div className="flex-1">
+                  <h3 className="text-lg font-semibold mb-2">{option.title}</h3>
+                  <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">{option.description}</p>
+                  <ul className="space-y-2">
+                    {option.points.map((point, i) => (
+                      <li key={i} className="text-sm text-gray-600 dark:text-gray-400 flex items-start">
+                        <ArrowRight className="w-4 h-4 text-congo-blue mr-2 mt-0.5 flex-shrink-0" />
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Urgency Message */}
+        {/* Engagement Message */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.5 }}
-          className="bg-gradient-to-br from-red-50 to-orange-50 dark:from-red-900/20 dark:to-orange-900/20 rounded-xl p-8 card-shadow text-center border border-red-200 dark:border-red-800"
+          className="bg-gradient-to-br from-congo-blue/10 to-congo-red/10 dark:from-congo-blue/20 dark:to-congo-red/20 rounded-xl p-8 card-shadow text-center"
         >
-          <AlertTriangle className="w-12 h-12 text-red-600 mx-auto mb-4" />
-          <h3 className="text-xl font-semibold mb-4 text-red-800 dark:text-red-200">Le Coût de l'Inaction Augmente Chaque Jour</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+          <h3 className="text-xl font-semibold mb-4">Notre Engagement</h3>
+          <p className="text-lg text-gray-700 dark:text-gray-300 mb-6">
+            Nous sommes prêts à travailler main dans la main avec votre équipe pour 
+            assurer le succès de cette initiative nationale cruciale.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
-              <p className="text-2xl font-bold text-red-600">24h</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">= Plus de vies en danger</p>
+              <div className="w-12 h-12 bg-emerald-500/20 rounded-full mx-auto mb-3 flex items-center justify-center">
+                <CheckCircle className="w-6 h-6 text-emerald-600" />
+              </div>
+              <p className="text-sm font-medium">Transparence Totale</p>
             </div>
             <div className="text-center">
-              <p className="text-2xl font-bold text-orange-600">7 jours</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">= Millions perdus en économie</p>
+              <div className="w-12 h-12 bg-emerald-500/20 rounded-full mx-auto mb-3 flex items-center justify-center">
+                <Shield className="w-6 h-6 text-emerald-600" />
+              </div>
+              <p className="text-sm font-medium">Sécurité Garantie</p>
             </div>
             <div className="text-center">
-              <p className="text-2xl font-bold text-purple-600">30 jours</p>
-              <p className="text-sm text-gray-600 dark:text-gray-400">= Divisions irréversibles</p>
+              <div className="w-12 h-12 bg-emerald-500/20 rounded-full mx-auto mb-3 flex items-center justify-center">
+                <TrendingUp className="w-6 h-6 text-emerald-600" />
+              </div>
+              <p className="text-sm font-medium">Résultats Mesurables</p>
             </div>
-          </div>
-          <div className="flex justify-center items-center space-x-2 text-emerald-700 dark:text-emerald-300 font-medium">
-            <span>La protection commence dès votre décision</span>
-            <ArrowRight className="w-5 h-5" />
           </div>
         </motion.div>
 
@@ -128,11 +138,11 @@ export function NextStepsSlide() {
           <div className="bg-gradient-to-r from-congo-blue to-congo-red p-1 rounded-xl inline-block">
             <div className="bg-white dark:bg-gray-900 rounded-lg px-8 py-6">
               <p className="text-xl font-semibold gradient-text mb-3">
-                Le Choix Est Clair: Agir ou Subir
+                Ensemble, Protégeons la RDC
               </p>
               <p className="text-gray-700 dark:text-gray-300 font-medium">
-                Protégeons nos citoyens. Sauvons des vies. Défendons notre économie.
-                <br />Unifions notre nation. <span className="text-emerald-600">Le moment est MAINTENANT.</span>
+                Nous attendons avec impatience l'opportunité de discuter avec vous
+                <br />et de contribuer à la sécurité informationnelle de notre nation.
               </p>
             </div>
           </div>

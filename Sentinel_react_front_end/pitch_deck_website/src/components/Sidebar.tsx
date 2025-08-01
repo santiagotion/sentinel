@@ -10,8 +10,37 @@ interface SidebarProps {
 export function Sidebar({ slides, currentSlide, onNavigate }: SidebarProps) {
 
   return (
-    <aside className="w-80 bg-gray-50 dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 h-screen overflow-y-auto">
-      <div className="p-6">
+    <>
+      {/* Tablet Sidebar - Numbers Only */}
+      <aside className="hidden md:block lg:hidden w-20 bg-gray-50 dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 h-screen overflow-y-auto">
+        <div className="p-4">
+          <div className="flex justify-center mb-8">
+            <Shield className="w-10 h-10 text-congo-blue" />
+          </div>
+          
+          <nav className="space-y-2">
+            {slides.map((_, index) => (
+              <motion.button
+                key={index}
+                onClick={() => onNavigate(index)}
+                className={`w-full py-3 rounded-lg transition-all duration-200 ${
+                  currentSlide === index
+                    ? 'bg-congo-blue text-white font-bold shadow-lg'
+                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800'
+                }`}
+                whileHover={{ scale: currentSlide === index ? 1 : 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {String(index + 1).padStart(2, '0')}
+              </motion.button>
+            ))}
+          </nav>
+        </div>
+      </aside>
+
+      {/* Desktop Sidebar - Full */}
+      <aside className="hidden lg:block w-80 bg-gray-50 dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800 h-screen overflow-y-auto">
+        <div className="p-6">
         <div className="flex items-center space-x-3 mb-8">
           <Shield className="w-10 h-10 text-congo-blue" />
           <div>
@@ -55,5 +84,6 @@ export function Sidebar({ slides, currentSlide, onNavigate }: SidebarProps) {
         </nav>
       </div>
     </aside>
+    </>
   );
 }

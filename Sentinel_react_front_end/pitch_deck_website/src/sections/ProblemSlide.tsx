@@ -36,8 +36,8 @@ export function ProblemSlide() {
   ];
 
   return (
-    <section className="h-full flex items-center justify-center p-8">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+    <section className="h-full flex items-center justify-center p-4 md:p-6 lg:p-8">
+      <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

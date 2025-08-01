@@ -45,7 +45,7 @@ export function TitleSlide() {
           transition={{ delay: 0.6, duration: 0.5 }}
           className="text-sm text-gray-500 dark:text-gray-600"
         >
-          Présentation Confidentielle - Gouvernement RDC
+          Présentation
         </motion.div>
         
       </div>

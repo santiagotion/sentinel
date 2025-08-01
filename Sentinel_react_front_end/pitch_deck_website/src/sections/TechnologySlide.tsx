@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 export function TechnologySlide() {
   return (
-    <section className="h-full flex items-center justify-center p-8">
+    <section className="h-full flex items-center justify-center p-4 md:p-6 lg:p-8">
       <div className="w-full px-4 lg:px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

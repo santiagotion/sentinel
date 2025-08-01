@@ -5,12 +5,12 @@ export function SolutionOverviewSlide() {
   const comparisons = [
     {
       without: "Détection après propagation virale",
-      with: "Détection en 2.4 secondes avec alertes",
+      with: "Détection immédiate avec alertes",
       icon: Clock
     },
     {
       without: "Sources inconnues, acteurs invisibles",
-      with: "Identification des bots (96.3% précision)",
+      with: "Identification précise des bots",
       icon: Bot
     },
     {
@@ -31,8 +31,8 @@ export function SolutionOverviewSlide() {
   ];
 
   return (
-    <section className="h-full flex items-center justify-center p-8">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+    <section className="h-full flex items-center justify-center p-4 md:p-6 lg:p-8">
+      <div className="max-w-6xl mx-auto px-4 md:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

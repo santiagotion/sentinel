@@ -1,38 +1,93 @@
-import { Monitor, AlertCircle, TrendingUp, Map, Search, Network, Bot, Shield, BarChart3, Bell } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { X, Maximize2, ChevronLeft, ChevronRight } from 'lucide-react';
+
+// Import screenshots
+import screenshot1 from '../assets/Screenshot 2025-07-12 at 14.12.17.png';
+import screenshot2 from '../assets/Screenshot 2025-07-12 at 14.12.36.png';
+import screenshot3 from '../assets/Screenshot 2025-07-12 at 14.13.02.png';
+import screenshot4 from '../assets/Screenshot 2025-07-12 at 14.13.52.png';
+import screenshot5 from '../assets/Screenshot 2025-07-12 at 14.14.21.png';
+import screenshot6 from '../assets/Screenshot 2025-07-12 at 14.17.24.png';
+import screenshot7 from '../assets/Screenshot 2025-07-12 at 14.18.48.png';
+import screenshot8 from '../assets/Screenshot 2025-07-12 at 14.19.36.png';
+import screenshot9 from '../assets/Screenshot 2025-07-12 at 14.21.35.png';
+import screenshot10 from '../assets/Screenshot 2025-07-12 at 14.22.03.png';
+import screenshot11 from '../assets/Screenshot 2025-08-01 at 05.01.34.png';
+import screenshot12 from '../assets/Screenshot 2025-08-01 at 05.02.22.png';
 
 export function DemoSlide() {
-  const dashboardMetrics = [
-    { value: "45M+", label: "Congolais protégés", color: "text-blue-600" },
-    { value: "11", label: "Plateformes surveillées", color: "text-purple-600" },
-    { value: "2.4s", label: "Détection menaces", color: "text-orange-600" },
-    { value: "0", label: "Violences évitées", color: "text-emerald-600" }
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const screenshots = [
+    {
+      src: screenshot1,
+      title: "Chronologie de Propagation",
+      description: "Visualisation en temps réel de la propagation virale des fausses informations"
+    },
+    {
+      src: screenshot2,
+      title: "Sources de Désinformation",
+      description: "Identification et analyse des sources diffusant des contenus manipulés"
+    },
+    {
+      src: screenshot3,
+      title: "Analyse Multi-Sources",
+      description: "Dashboard d'analyse de propagation avec détection des tendances émergentes"
+    },
+    {
+      src: screenshot4,
+      title: "Centre d'Alertes",
+      description: "Système d'alertes en temps réel pour les menaces critiques"
+    },
+    {
+      src: screenshot5,
+      title: "Actions de Contre-Attaque",
+      description: "Interface de gestion des campagnes défensives automatisées"
+    },
+    {
+      src: screenshot6,
+      title: "Intelligence Géographique",
+      description: "Cartographie avancée des zones d'impact et de propagation"
+    },
+    {
+      src: screenshot8,
+      title: "Analyses Avancées",
+      description: "Métriques détaillées sur l'engagement et les sentiments"
+    },
+    {
+      src: screenshot11,
+      title: "Réseau de Propagation",
+      description: "Visualisation interactive de la propagation des informations entre comptes et événements"
+    },
+    {
+      src: screenshot12,
+      title: "Centre de Commandement",
+      description: "Analyse d'opinion en temps réel avec répartition par plateformes et régions"
+    }
   ];
 
-  const interfaceFeatures = [
-    { icon: Network, title: "Réseaux Invisibles Révélés", desc: "Détecte connexions cachées impossibles à voir manuellement" },
-    { icon: Bot, title: "Acteurs Étrangers Exposés", desc: "96.3% précision identification manipulateurs" },
-    { icon: AlertCircle, title: "Alertes Avant Violence", desc: "Prévient crises avant qu'elles n'éclatent" },
-    { icon: TrendingUp, title: "Protection Économique", desc: "Stoppe désinformation sur nos ressources" },
-    { icon: Map, title: "Vision Nationale Complète", desc: "26 provinces, toutes communautés en temps réel" },
-    { icon: BarChart3, title: "Opinion Publique Claire", desc: "Gouvernance moderne basée sur données réelles" }
-  ];
+  const openFullscreen = (index: number) => {
+    setSelectedImage(index);
+    setCurrentImageIndex(index);
+  };
 
-  const realExample = {
-    title: "Démonstration Live: Attaque Multi-Plateforme Neutralisée",
-    timeline: [
-      { time: "0 sec", event: "Campagne massive détectée: 'Tensions ethniques' sur 5 plateformes", metric: "1,247 msg/minute" },
-      { time: "2.4 sec", event: "Acteurs étrangers identifiés manipulant notre jeunesse", metric: "312 bots + 87 comptes coordonnés" },
-      { time: "30 sec", event: "Réseaux cachés révélés: serveurs externes orchestrent division", metric: "Connexions invisibles mappées" },
-      { time: "2 min", event: "Prédiction: Violence imminente dans 3 provinces si non stoppé", metric: "Alerte CRITIQUE" },
-      { time: "5 min", event: "Contre-narratifs de paix diffusés + leaders communautaires alertés", metric: "11 plateformes activées" },
-      { time: "15 min", event: "Tensions désamorcées, communautés unifiées, paix préservée", metric: "0 violence, 45M protégés" }
-    ]
+  const closeFullscreen = () => {
+    setSelectedImage(null);
+  };
+
+  const navigateImage = (direction: 'prev' | 'next') => {
+    if (direction === 'prev') {
+      setCurrentImageIndex((prev) => (prev > 0 ? prev - 1 : screenshots.length - 1));
+    } else {
+      setCurrentImageIndex((prev) => (prev < screenshots.length - 1 ? prev + 1 : 0));
+    }
   };
 
   return (
-    <section className="h-full flex items-center justify-center p-8">
-      <div className="max-w-6xl mx-auto px-6 lg:px-8">
+    <section className="h-full flex items-center justify-center p-4 md:p-6 lg:p-8">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -40,100 +95,111 @@ export function DemoSlide() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-5xl font-light mb-6">
-            <span className="gradient-text font-bold">Démonstration</span> du Système
+            <span className="gradient-text font-bold">Interface SENTINEL</span>
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-4xl mx-auto">
-            Voyez comment SENTINEL transforme l'impossible défi manuel en protection automatisée 
-            pour 45 millions de Congolais en temps réel
+            Découvrez l'interface puissante qui permet de surveiller, analyser et neutraliser
+            les menaces informationnelles en temps réel
           </p>
         </motion.div>
 
-        {/* Key Metrics */}
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2, duration: 0.5 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8"
-        >
-          {dashboardMetrics.map((metric, index) => (
-            <div key={index} className="bg-white dark:bg-gray-800 rounded-lg p-4 text-center card-shadow">
-              <div className={`text-3xl font-bold ${metric.color}`}>{metric.value}</div>
-              <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{metric.label}</p>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* Interface Features */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4, duration: 0.5 }}
-          className="mb-12"
-        >
-          <h3 className="text-2xl font-semibold mb-6 text-center">Interface de Contrôle SENTINEL</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {interfaceFeatures.map((feature, index) => (
-              <div key={index} className="bg-white dark:bg-gray-800 rounded-lg p-6 card-shadow">
-                <feature.icon className="w-10 h-10 text-congo-blue mb-3" />
-                <h4 className="font-semibold mb-2">{feature.title}</h4>
-                <p className="text-sm text-gray-600 dark:text-gray-400">{feature.desc}</p>
-              </div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Real Example */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-          className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900 rounded-xl p-8"
-        >
-          <h3 className="text-2xl font-semibold mb-6 text-center">{realExample.title}</h3>
-          
-          <div className="max-w-3xl mx-auto">
-            <div className="relative">
-              {/* Timeline line */}
-              <div className="absolute left-24 top-0 bottom-0 w-0.5 bg-gradient-to-b from-red-500 via-orange-500 to-emerald-500"></div>
-              
-              {/* Timeline events */}
-              <div className="space-y-6">
-                {realExample.timeline.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.8 + index * 0.1, duration: 0.5 }}
-                    className="flex items-center space-x-6"
-                  >
-                    <div className="w-20 text-right font-mono text-sm font-semibold text-gray-600 dark:text-gray-400">
-                      {item.time}
-                    </div>
-                    <div className="w-4 h-4 bg-white border-2 border-congo-blue rounded-full z-10"></div>
-                    <div className="flex-1 bg-white dark:bg-gray-800 rounded-lg p-4 card-shadow">
-                      <p className="font-medium mb-1">{item.event}</p>
-                      <p className="text-sm text-congo-blue font-semibold">{item.metric}</p>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </div>
-            
+        {/* Screenshots Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-full">
+          {screenshots.map((screenshot, index) => (
             <motion.div
+              key={index}
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.4, duration: 0.5 }}
-              className="mt-8 p-4 bg-emerald-50 dark:bg-emerald-900/20 border border-emerald-200 dark:border-emerald-800 rounded-lg"
+              transition={{ delay: 0.1 * index, duration: 0.3 }}
+              className="relative group cursor-pointer"
+              onClick={() => openFullscreen(index)}
             >
-              <div className="flex items-center justify-center space-x-2">
-                <Shield className="w-5 h-5 text-emerald-600" />
-                <p className="text-emerald-800 dark:text-emerald-300 font-medium">
-                  Résultat: Vies sauvées | Communautés unies | Économie protégée | Paix préservée
-                </p>
+              <div className="relative overflow-hidden rounded-lg bg-gray-900 aspect-[16/10] shadow-xl">
+                <img
+                  src={screenshot.src}
+                  alt={screenshot.title}
+                  className="w-full h-full object-cover object-top transition-transform duration-300 group-hover:scale-105"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                    <h3 className="font-semibold text-base mb-2">{screenshot.title}</h3>
+                    <p className="text-sm opacity-90 line-clamp-2">{screenshot.description}</p>
+                  </div>
+                  <div className="absolute top-2 right-2 bg-black/50 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+                    <Maximize2 className="w-4 h-4 text-white" />
+                  </div>
+                </div>
               </div>
             </motion.div>
-          </div>
-        </motion.div>
+          ))}
+        </div>
+
+        {/* Fullscreen Viewer */}
+        <AnimatePresence>
+          {selectedImage !== null && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 bg-black flex items-center justify-center"
+              onClick={closeFullscreen}
+            >
+              <button
+                className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors z-10"
+                onClick={closeFullscreen}
+              >
+                <X className="w-6 h-6 text-white" />
+              </button>
+
+              <button
+                className="absolute left-4 top-1/2 -translate-y-1/2 p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors z-10"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigateImage('prev');
+                }}
+              >
+                <ChevronLeft className="w-6 h-6 text-white" />
+              </button>
+
+              <button
+                className="absolute right-4 top-1/2 -translate-y-1/2 p-2 bg-white/10 hover:bg-white/20 rounded-full transition-colors z-10"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigateImage('next');
+                }}
+              >
+                <ChevronRight className="w-6 h-6 text-white" />
+              </button>
+
+              <div
+                className="max-w-[90vw] max-h-[90vh] relative"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <motion.img
+                  key={currentImageIndex}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  src={screenshots[currentImageIndex].src}
+                  alt={screenshots[currentImageIndex].title}
+                  className="max-w-full max-h-[80vh] object-contain"
+                />
+                <div className="text-center mt-4 text-white">
+                  <h3 className="text-xl font-semibold mb-2">
+                    {screenshots[currentImageIndex].title}
+                  </h3>
+                  <p className="text-gray-300">
+                    {screenshots[currentImageIndex].description}
+                  </p>
+                  <p className="text-sm text-gray-400 mt-2">
+                    {currentImageIndex + 1} / {screenshots.length}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </section>
   );

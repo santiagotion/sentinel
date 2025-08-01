@@ -29,6 +29,12 @@ export default {
           '100%': { transform: 'translateY(0)', opacity: '1' },
         },
       },
+      spacing: {
+        'safe': 'env(safe-area-inset-bottom)',
+      },
+      padding: {
+        'safe': 'env(safe-area-inset-bottom)',
+      },
     },
   },
   plugins: [],
