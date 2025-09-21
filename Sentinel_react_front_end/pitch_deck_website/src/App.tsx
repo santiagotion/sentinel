@@ -4,6 +4,7 @@ import { Sidebar } from './components/Sidebar';
 import { Header } from './components/Header';
 import { BottomNavigation } from './components/BottomNavigation';
 import { ScrollIndicator } from './components/ScrollIndicator';
+import { ThemeToggle } from './components/ThemeToggle';
 import { Menu, X, Shield } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TitleSlide } from './sections/TitleSlide';
@@ -22,10 +23,12 @@ import { BenefitsSlide } from './sections/BenefitsSlide';
 import { NextStepsSlide } from './sections/NextStepsSlide';
 import { FactCheckAppSlide } from './sections/FactCheckAppSlide';
 import { TechnologySlide } from './sections/TechnologySlide';
+import { YouTubeAnalysis } from './pages/YouTubeAnalysis';
 
 function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [currentView, setCurrentView] = useState<'slides' | 'youtube'>('slides');
   
   const slides = [
     <TitleSlide />,
@@ -129,7 +132,9 @@ function App() {
           <Sidebar 
             slides={slideNames}
             currentSlide={currentSlide}
+            currentView={currentView}
             onNavigate={handleNavigate}
+            onViewChange={setCurrentView}
           />
         </div>
         
@@ -172,21 +177,42 @@ function App() {
                     {slideNames.map((name, index) => (
                       <button
                         key={index}
-                        onClick={() => handleNavigate(index)}
+                        onClick={() => {
+                          setCurrentView('slides');
+                          handleNavigate(index);
+                        }}
                         className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 ${
-                          currentSlide === index
+                          currentView === 'slides' && currentSlide === index
                             ? 'bg-congo-blue text-white font-semibold shadow-lg'
                             : 'text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800'
                         }`}
                       >
                         <div className="flex items-center space-x-3">
-                          <span className={`text-sm ${currentSlide === index ? 'text-white/80' : 'text-gray-500'}`}>
+                          <span className={`text-sm ${currentView === 'slides' && currentSlide === index ? 'text-white/80' : 'text-gray-500'}`}>
                             {String(index + 1).padStart(2, '0')}
                           </span>
                           <span>{name}</span>
                         </div>
                       </button>
                     ))}
+                    
+                    {/* YouTube Analysis Button */}
+                    <button
+                      onClick={() => {
+                        setCurrentView('youtube');
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-200 mt-4 ${
+                        currentView === 'youtube'
+                          ? 'bg-congo-blue text-white font-semibold shadow-lg'
+                          : 'text-gray-700 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-gray-800'
+                      }`}
+                    >
+                      <div className="flex items-center space-x-3">
+                        <Youtube className={`w-4 h-4 ${currentView === 'youtube' ? 'text-white/80' : 'text-gray-500'}`} />
+                        <span>Analyse YouTube</span>
+                      </div>
+                    </button>
                   </nav>
                 </div>
               </motion.div>
@@ -209,48 +235,56 @@ function App() {
                 <Shield className="w-8 h-8 text-congo-blue" />
                 <span className="text-lg font-bold text-gray-900 dark:text-white">SENTINEL</span>
               </div>
-              <div className="w-10" /> {/* Spacer for centering */}
+              <ThemeToggle />
             </div>
             <h1 className="text-center text-base font-bold text-gray-900 dark:text-white">
-              {slideNames[currentSlide]}
+              {currentView === 'slides' ? slideNames[currentSlide] : 'Analyse YouTube'}
             </h1>
           </header>
           
           {/* Tablet Header with Logo */}
           <header className="hidden md:block lg:hidden bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-800 px-4 py-3">
-            <div className="flex items-center justify-center space-x-2 mb-2">
-              <Shield className="w-8 h-8 text-congo-blue" />
-              <span className="text-lg font-bold text-gray-900 dark:text-white">SENTINEL</span>
+            <div className="flex items-center justify-between mb-2">
+              <div className="w-10" /> {/* Spacer */}
+              <div className="flex items-center space-x-2">
+                <Shield className="w-8 h-8 text-congo-blue" />
+                <span className="text-lg font-bold text-gray-900 dark:text-white">SENTINEL</span>
+              </div>
+              <ThemeToggle />
             </div>
             <h1 className="text-center text-lg font-bold text-gray-900 dark:text-white">
-              {slideNames[currentSlide]}
+              {currentView === 'slides' ? slideNames[currentSlide] : 'Analyse YouTube'}
             </h1>
           </header>
           
           {/* Desktop Header */}
           <div className="hidden lg:block">
-            <Header currentSlideTitle={slideNames[currentSlide]} />
+            <Header currentSlideTitle={currentView === 'slides' ? slideNames[currentSlide] : 'Analyse YouTube'} />
           </div>
           
-          {/* Slide Content */}
-          <main className="flex-1 overflow-y-auto overflow-x-hidden pb-20">
+          {/* Content */}
+          <main className={`flex-1 overflow-y-auto overflow-x-hidden ${currentView === 'slides' ? 'pb-24' : 'pb-0'}`}>
             <div className="transition-all duration-500 ease-in-out w-full overflow-x-hidden">
-              {slides[currentSlide]}
+              {currentView === 'slides' ? slides[currentSlide] : <YouTubeAnalysis />}
             </div>
           </main>
           
-          {/* Scroll Indicator */}
-          <ScrollIndicator currentSlide={currentSlide} />
+          {/* Scroll Indicator - Only for slides */}
+          {currentView === 'slides' && (
+            <ScrollIndicator currentSlide={currentSlide} />
+          )}
           
-          {/* Bottom Navigation - Fixed */}
-          <div className="fixed bottom-0 left-0 right-0 z-10 safe-area-inset-bottom">
-            <BottomNavigation
-              currentSlide={currentSlide}
-              totalSlides={totalSlides}
-              onPrevious={handlePrevious}
-              onNext={handleNext}
-            />
-          </div>
+          {/* Bottom Navigation - Fixed - Only for slides */}
+          {currentView === 'slides' && (
+            <div className="fixed bottom-0 left-0 right-0 z-10 safe-area-inset-bottom">
+              <BottomNavigation
+                currentSlide={currentSlide}
+                totalSlides={totalSlides}
+                onPrevious={handlePrevious}
+                onNext={handleNext}
+              />
+            </div>
+          )}
         </div>
       </div>
     </ThemeProvider>

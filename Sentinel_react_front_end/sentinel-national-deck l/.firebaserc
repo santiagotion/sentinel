@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "sentinel-rdc"
+  },
+  "targets": {
+    "sentinel-rdc": {
+      "hosting": {
+        "sentinel-national": [
+          "sentinel-deck-nt"
+        ]
+      }
+    }
+  }
+}

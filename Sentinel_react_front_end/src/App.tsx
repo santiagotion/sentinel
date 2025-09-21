@@ -13,6 +13,7 @@ import { AlertsScreen } from './components/screens/AlertsScreen';
 import { InformationSpreadScreen } from './components/screens/InformationSpreadScreen';
 import { SubjectAnalysisScreen } from './components/screens/SubjectAnalysisScreen';
 import { CounterActionScreen } from './components/screens/CounterActionScreen';
+import { YouTubeAnalysisScreen } from './components/screens/YouTubeAnalysisScreen';
 import { GovernmentPresentation } from './pages/GovernmentPresentation';
 import { 
   Search, Shield, AlertTriangle, Activity, TrendingUp, Globe, Users, 
@@ -20,7 +21,7 @@ import {
   MapPin, Gauge, TrendingDown, Clock, Filter, X, Bell, Settings, LogOut, Home,
   Download, RefreshCw, Maximize2, ChevronLeft, Info, CheckCircle, XCircle, Layers,
   FileText, MessageSquare, Share2, Bookmark, Hash, Calendar, Target, Cpu, Award,
-  Moon, Sun, ShareIcon
+  Moon, Sun, ShareIcon, Youtube
 } from 'lucide-react';
 
 // Main Dashboard Component
@@ -93,6 +94,7 @@ function Dashboard() {
     { id: 'network', label: 'Réseau', icon: Network, badge: null },
     { id: 'geographic', label: 'Géographie', icon: Map, badge: null },
     { id: 'intelligence', label: 'Intelligence IA', icon: Brain, badge: 'AI' },
+    { id: 'youtube', label: 'Analyse YouTube', icon: Youtube, badge: 'NEW' },
     { id: 'spread', label: 'Propagation', icon: ShareIcon, badge: null },
     { id: 'counter-action', label: 'Contre-Attaque', icon: Shield, badge: null },
     { id: 'sources', label: 'Sources', icon: Database, badge: null },
@@ -215,9 +217,6 @@ function Dashboard() {
               <h2 className="text-2xl font-bold text-gray-800 dark:text-white">
                 {menuItems.find(item => item.id === activeScreen)?.label}
               </h2>
-              <p className="text-sm text-gray-500 dark:text-gray-400">
-                Dernière mise à jour: {lastRefresh.toLocaleTimeString('fr-FR')}
-              </p>
             </div>
             <div className="flex items-center space-x-4">
               <button 
@@ -257,6 +256,7 @@ function Dashboard() {
             {activeScreen === 'network' && <NetworkScreen />}
             {activeScreen === 'geographic' && <GeographicScreen />}
             {activeScreen === 'intelligence' && <IntelligenceScreen />}
+            {activeScreen === 'youtube' && <YouTubeAnalysisScreen />}
             {activeScreen === 'spread' && !selectedSubjectId && (
               <InformationSpreadScreen 
                 onViewSubject={(id) => setSelectedSubjectId(id)}

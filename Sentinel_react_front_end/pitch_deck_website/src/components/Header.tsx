@@ -1,4 +1,3 @@
-import { Shield } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 
 interface HeaderProps {
